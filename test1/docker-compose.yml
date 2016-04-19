@@ -4,10 +4,24 @@ services:
     build: ../keycloak-standalone
     expose:
       - "8080"
+      - "9090"
+    ports:
+      - "8080:8080"
+      - "9990:9990"
+    # Uncomment the following and docker-compose up keycloak again to export realms
+    #volumes:
+    #  - ./keycloak-export:/export
+    #entrypoint:
+    #  - /opt/jboss/keycloak/bin/standalone.sh
+    #  - -Dkeycloak.migration.action=export
+    #  - -Dkeycloak.migration.provider=singleFile
+    #  - -Dkeycloak.migration.file=/export/openidc-keycloak-test.json
   openidc:
     build: ../openidc-jessie
     expose:
       - "80"
+    ports:
+      - "80:80"
     depends_on:
       - keycloak
   testclient:
