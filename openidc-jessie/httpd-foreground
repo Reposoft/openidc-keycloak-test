@@ -1,0 +1,7 @@
+#!/bin/bash
+# Runs apt-get apache2 in foreground, much like https://github.com/docker-library/httpd
+source /etc/apache2/envvars
+rm -f $APACHE_LOG_DIR/*.log
+ln -s /proc/self/fd/1 $APACHE_LOG_DIR/access.log
+ln -s /proc/self/fd/2 $APACHE_LOG_DIR/error.log
+apache2 -DFOREGROUND

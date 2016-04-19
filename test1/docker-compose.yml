@@ -1,0 +1,17 @@
+version: '2'
+services:
+  keycloak:
+    build: ../keycloak-standalone
+    expose:
+      - "8080"
+  openidc:
+    build: ../openidc-jessie
+    expose:
+      - "80"
+    depends_on:
+      - keycloak
+  testclient:
+    build: ./client-node-request
+    depends_on:
+      - openidc
+      - keycloak

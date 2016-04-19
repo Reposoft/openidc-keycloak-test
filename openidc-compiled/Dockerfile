@@ -1,0 +1,1 @@
+FROM solsson/httpd:openidc

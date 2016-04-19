@@ -1,0 +1,17 @@
+{
+  "name": "client-node-request",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/mocha --reporter mocha-tap-reporter ./index"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^2.4.5",
+    "mocha-tap-reporter": "^0.1.3",
+    "request": "^2.72.0",
+    "request-promise": "^3.0.0"
+  }
+}
