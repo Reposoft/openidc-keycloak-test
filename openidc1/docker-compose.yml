@@ -1,7 +1,19 @@
 version: '2'
 services:
+  postgres:
+    image: postgres:9.5
+    expose:
+      - "5432"
+    environment:
+      POSTGRES_PASSWORD: keycloak
+      POSTGRES_USER: keycloak
+      # Workaround for legacy env use in container
+      # (didn't solve "WFLYCTL0211: Cannot resolve expression 'jdbc:postgresql://${env.POSTGRES_PORT_5432_TCP_ADDR}...")
+      POSTGRES_PORT_5432_TCP_ADDR: postgres
   keycloak:
-    build: ../keycloak-standalone
+    image: jboss/keycloak-postgres:1.9.2.Final
+    depends_on:
+      - postgres
     environment:
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: openidctest
