@@ -19,3 +19,8 @@ RUN service apache2 start && curl -v http://localhost/protected/index.php 2>&1 |
 EXPOSE 80
 ADD httpd-foreground /usr/local/bin/
 ENTRYPOINT ["httpd-foreground"]
+
+# Invalid Mutex directory in argument file:/var/lock/apache2
+RUN mkdir -p /var/lock/apache2
+# AH00100: apache2: could not log pid to file /var/run/apache2/apache2.pid
+RUN mkdir -p /var/run/apache2
