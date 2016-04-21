@@ -2,6 +2,9 @@ version: '2'
 services:
   keycloak:
     build: ../keycloak-standalone
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: openidctest
     expose:
       - "8080"
       - "9090"
