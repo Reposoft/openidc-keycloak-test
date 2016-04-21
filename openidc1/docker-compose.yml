@@ -1,25 +1,22 @@
 version: '2'
 services:
-  mysql:
-    image: mariadb:10.0
+  postgres:
+    image: postgres:9.5
     expose:
-      - "3306"
+      - "5432"
     environment:
-      MYSQL_DATABASE: keycloak
-      MYSQL_USER: keycloak
-      MYSQL_PASSWORD: keycloak
-      MYSQL_ROOT_PASSWORD: root
+      POSTGRES_PASSWORD: keycloak
+      POSTGRES_USER: keycloak
   keycloak:
-    image: jboss/keycloak-mysql:1.9.2.Final
+    image: jboss/keycloak-postgres:1.9.2.Final
     links:
-      - mysql
+      - postgres
     environment:
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: openidctest
-      # Workaround for legacy env use in container
-      # (didn't solve "WFLYCTL0211: Cannot resolve expression 'jdbc:mysql://${env.POSTGRES_PORT_5432_TCP_ADDR}...")n
-      MYSQL_PORT_3306_TCP_PORT: 3306
-      MYSQL_PORT_3306_TCP_ADDR: mysql
+      # Workaround for container using legacy Docker links, resulting in
+      # "WFLYCTL0211: Cannot resolve expression 'jdbc:postgresql://${env.POSTGRES_PORT_5432_TCP_ADDR}...")n
+      POSTGRES_PORT_5432_TCP_ADDR: postgres
     expose:
       - "8080"
       - "9090"
