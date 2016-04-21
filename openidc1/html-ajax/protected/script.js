@@ -1,4 +1,6 @@
 
+var ajaxinterval = 5000;
+
 var ajaxtest = function(log) {
   $.ajax({
     url: '/protected/'
@@ -7,8 +9,9 @@ var ajaxtest = function(log) {
     log('AJAX failed');
   }).done(function( data, textStatus, jqXHR ) {
     var h = jqXHR.getAllResponseHeaders();
-    console.log('Ok', jqXHR, textStatus, h);
-    log('AJAX ok');
+    var setcookie = h['Set-Cookie'];
+    console.log('Ok', jqXHR, textStatus);
+    log('AJAX ok' + (setcookie ? '. Got cookie: ' + setcookie : ''));
   });
 };
 
@@ -16,18 +19,17 @@ $(document).ready(function() {
 
   var log = function(msg) {
     $e = $('#log');
-    $e.find('.old').addClass('older');
+    $e.find('.old4').addClass('old5');
+    $e.find('.old3').addClass('old4');
+    $e.find('.old2').addClass('old3');
+    $e.find('.old').addClass('old2');
     $e.find('> *').addClass('old');
     var $li = $('<li/>').text(msg).appendTo($e);
     $('<span/>').addClass('timestamp').text(new Date().toISOString()).prependTo($li);
   }
 
-  var t = 0;
-  for (; t <= 5000; t += 1000) {
-    setTimeout(ajaxtest.bind(null, log), t);
-  }
-  setTimeout(function() {
-    log('test completed');
-  }, t+1);
+  log('Running an AJAX test every ' + ajaxinterval + 'ms');
+  ajaxtest(log);
+  setInterval(ajaxtest.bind(null, log), ajaxinterval);
 
 });
