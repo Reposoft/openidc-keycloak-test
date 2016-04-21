@@ -2,3 +2,12 @@ body {
   font-family: sans-serif;
   margin: 2em;
 }
+
+#log .older {
+  display: none;
+}
+
+#log .timestamp {
+  color: #999;
+  margin-right: 1em;
+}
