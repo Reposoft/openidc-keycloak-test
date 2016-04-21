@@ -10,7 +10,16 @@
     "firstName" : "One",
     "lastName" : "Test",
     "email" : "test1@example.net",
-    "credentials" : [ ],
+    "credentials" : [ {
+      "type" : "password",
+      "hashedSaltedValue" : "LXG8a7ryaxJZu3m8EBazHG5SlZNtofo8amjLemkNij5g3LGiK9IatawdKZueDKiMGAPrkp3du+/Awi3BK2cIxg==",
+      "salt" : "S6ycWHG3QJuHwV5zOJjpyg==",
+      "hashIterations" : 1,
+      "counter" : 0,
+      "algorithm" : "pbkdf2",
+      "digits" : 0,
+      "createdDate" : 1461233340000
+    } ],
     "requiredActions" : [ ],
     "realmRoles" : [ "offline_access" ],
     "clientRoles" : {
