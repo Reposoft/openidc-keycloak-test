@@ -8,6 +8,7 @@ services:
     expose:
       - "8080"
       - "9090"
+    # For local browser; you also need "keycloak" in your hosts file
     ports:
       - "8080:8080"
       - "9990:9990"
@@ -23,6 +24,7 @@ services:
     build: ../openidc-jessie
     expose:
       - "80"
+    # For local browser; you also need "openidc" in your hosts file
     ports:
       - "80:80"
     depends_on:
