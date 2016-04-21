@@ -1,7 +1,5 @@
 
-var ajaxinterval = 5000;
-
-var ajaxtest = function(log) {
+var ajaxtestGET = function(log) {
   $.ajax({
     url: '/protected/'
   }).fail(function( jqXHR, textStatus, errorThrown ) {
@@ -9,11 +7,36 @@ var ajaxtest = function(log) {
     log('AJAX failed');
   }).done(function( data, textStatus, jqXHR ) {
     var h = jqXHR.getAllResponseHeaders();
-    var setcookie = h['Set-Cookie'];
-    console.log('Ok', jqXHR, textStatus);
-    log('AJAX ok' + (setcookie ? '. Got cookie: ' + setcookie : ''));
+    if (h['Set-Cookie']) {
+      log('HEAD request got cookie change: ' + h['Set-Cookie']);
+    }
+    log('AJAX ok');
   });
 };
+
+var ajaxtestHEADthenGET = function(log) {
+  $.ajax({
+    method: 'HEAD',
+    url: '/protected/'
+  }).fail(function( jqXHR, textStatus, errorThrown ) {
+    console.log('Fail', jqXHR, textStatus, errorThrown);
+    log('AJAX HEAD request failed, status ' + jqXHR.status + ' ' + textStatus);
+    // try the GET request, expect redirect
+    ajaxtestGET(log);
+  }).done(function( data, textStatus, jqXHR ) {
+    if (jqXHR.status !== 200) {
+      log('HEAD request got status ' + jqXHR.status);
+    }
+    var h = jqXHR.getAllResponseHeaders();
+    if (h['Set-Cookie']) {
+      log('HEAD request got cookie change: ' + h['Set-Cookie']);
+    }
+    ajaxtestGET(log);
+  });
+};
+
+var ajaxtest = ajaxtestHEADthenGET;
+var ajaxinterval = 5000;
 
 $(document).ready(function() {
 
