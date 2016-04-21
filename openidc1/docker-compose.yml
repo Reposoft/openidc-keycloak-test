@@ -29,11 +29,11 @@ services:
     # Uncomment the following and docker-compose up keycloak again to export realms
     volumes:
       - ./keycloak-setup/export:/export
-    entrypoint:
-      - /opt/jboss/keycloak/bin/standalone.sh
-      - -Dkeycloak.migration.action=export
-      - -Dkeycloak.migration.provider=dir
-      - -Dkeycloak.migration.dir=/export
+    #entrypoint:
+    #  - /opt/jboss/keycloak/bin/standalone.sh
+    #  - -Dkeycloak.migration.action=export
+    #  - -Dkeycloak.migration.provider=dir
+    #  - -Dkeycloak.migration.dir=/export
   openidc:
     build: ../openidc-jessie
     expose:
