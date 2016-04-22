@@ -48,6 +48,12 @@ services:
     #  - keycloak
     volumes:
       - ./html-ajax:/var/www/html
+  keycloak-setup:
+    build: ./keycloak-setup
+    links:
+      - keycloak
+    volumes:
+      - ./keycloak-setup/export:/export
   testclient:
     build: ./client-node-request
     links:
