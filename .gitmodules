@@ -1,0 +1,6 @@
+[submodule "httpd-jwtauth/mod_authnz_jwt"]
+	path = httpd-jwtauth/mod_authnz_jwt
+	url = https://github.com/AnthonyDeroche/mod_authnz_jwt
+[submodule "httpd-envauth/mod_auth_env"]
+	path = httpd-envauth/mod_auth_env
+	url = https://github.com/matujo/mod_auth_env
