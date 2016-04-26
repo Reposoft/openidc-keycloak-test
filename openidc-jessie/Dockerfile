@@ -24,3 +24,5 @@ ENTRYPOINT ["httpd-foreground"]
 RUN mkdir -p /var/lock/apache2
 # AH00100: apache2: could not log pid to file /var/run/apache2/apache2.pid
 RUN mkdir -p /var/run/apache2
+
+RUN a2enmod headers proxy_http

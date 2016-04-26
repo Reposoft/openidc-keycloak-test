@@ -5,6 +5,7 @@
     <title>mod_auth_openidc with Keycloak test</title>
     <link rel="stylesheet" href="style.css">
   <body>
+
     <h2>Initial setup</h2>
     <p>
       You need to import a testing realm into Keycloak.
@@ -15,8 +16,14 @@
       Then import Testrealm-users-0.json as
       <a href="http://keycloak:8080/auth/admin/master/console/#/realms/Testrealm/partial-import">Partial import</a>.
     </p>
+
     <h2>Auth testing</h2>
     <p>Go to <a href="/protected">/protected</a> to log in.</p>
     <p>The user is <code>test1:test1</code> user, if Keycloak realm import worked.</p>
+
+    <h2>Proxied containers</h2>
+    <p>If you protect your perimeter with openidc and run microservices behind that,
+      try something like the setup for <a href="http://openidc/protected/proxied-env">/protected/proxied-env</a>.
+    </p>
   </body>
 </html>

@@ -53,3 +53,7 @@ services:
     links:
       - openidc
       - keycloak
+  proxied-env:
+    build: ../httpd-envauth
+    expose:
+      - "80"
