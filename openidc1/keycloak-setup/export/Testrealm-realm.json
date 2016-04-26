@@ -15,7 +15,7 @@
   "sslRequired" : "none",
   "registrationAllowed" : false,
   "registrationEmailAsUsername" : false,
-  "rememberMe" : false,
+  "rememberMe" : true,
   "verifyEmail" : false,
   "resetPasswordAllowed" : false,
   "editUsernameAllowed" : false,
