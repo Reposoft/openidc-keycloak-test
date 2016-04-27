@@ -1,44 +1,24 @@
 
-var ajaxtestGET = function(log) {
-  $.ajax({
-    url: '/protected/'
-  }).fail(function( jqXHR, textStatus, errorThrown ) {
-    console.log('Fail', jqXHR, textStatus, errorThrown);
-    log('AJAX failed');
-  }).done(function( data, textStatus, jqXHR ) {
-    var h = jqXHR.getAllResponseHeaders();
-    if (h['Set-Cookie']) {
-      log('HEAD request got cookie change: ' + h['Set-Cookie']);
-    }
-    log('AJAX ok');
+
+var ajaxtest = function () {
+  var oReq = new XMLHttpRequest();
+  oReq.addEventListener('load', function () {
+    console.log(this.responseText);
   });
+  oReq.open('GET', '/protected');
+  oReq.send();
 };
 
-var ajaxtestHEADthenGET = function(log) {
-  $.ajax({
-    method: 'HEAD',
-    url: '/protected/'
-  }).fail(function( jqXHR, textStatus, errorThrown ) {
-    console.log('Fail', jqXHR, textStatus, errorThrown);
-    log('AJAX HEAD request failed, status ' + jqXHR.status + ' ' + textStatus);
-    // try the GET request, expect redirect
-    ajaxtestGET(log);
-  }).done(function( data, textStatus, jqXHR ) {
-    if (jqXHR.status !== 200) {
-      log('HEAD request got status ' + jqXHR.status);
-    }
-    var h = jqXHR.getAllResponseHeaders();
-    if (h['Set-Cookie']) {
-      log('HEAD request got cookie change: ' + h['Set-Cookie']);
-    }
-    ajaxtestGET(log);
-  });
-};
-
-var ajaxtest = ajaxtestHEADthenGET;
-var ajaxinterval = 5000;
+var ajaxinterval = 0;
+var ajaxtimer = 1000;
 
 $(document).ready(function() {
+
+  $.ajaxSetup({
+    beforeSend: function(jqXHR, settings) {
+        jqXHR.setRequestHeader('X-Requested-With', '');
+    }
+  });
 
   var log = function(msg) {
     $e = $('#log');
@@ -49,10 +29,12 @@ $(document).ready(function() {
     $e.find('> *').addClass('old');
     var $li = $('<li/>').text(msg).appendTo($e);
     $('<span/>').addClass('timestamp').text(new Date().toISOString()).prependTo($li);
-  }
+    console.log(msg);
+  };
 
   log('Running an AJAX test every ' + ajaxinterval + 'ms');
   ajaxtest(log);
-  setInterval(ajaxtest.bind(null, log), ajaxinterval);
+  var id = setInterval(ajaxtest.bind(null, log), ajaxinterval);
+  setTimeout(clearInterval.bind(null, id), ajaxtimer);
 
 });
