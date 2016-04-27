@@ -9,7 +9,8 @@ See [docker-compose.yml](https://github.com/Reposoft/openidc-keycloak-test/blob/
 
 Might be run like this:
 ```
-docker-compose up --build -d postgres keycloak openidc
+cd ./openidc1
+docker-compose up --build -d postgres keycloak openidc 
 docker-compose up --build keycloak-setup #TODO
 docker-compose up --build -d testclient
 docker-compose logs -f
