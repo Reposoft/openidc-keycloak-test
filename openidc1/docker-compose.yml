@@ -53,6 +53,18 @@ services:
       - keycloak
     volumes:
       - ./html-ajax:/var/www/html
+  # Can be used to test that auth state is shared between containers,
+  # but login on http://openidc:2080/ will redirect to the wrong instance unless we tweak the conf file
+  openidc2:
+    build: ../openidc-jessie
+    ports:
+      - "2080:80"
+    links:
+      - redis1:redis
+    depends_on:
+      - keycloak
+    volumes:
+      - ./html-ajax:/var/www/html
   keycloak-setup:
     build: ./keycloak-setup
     links:
