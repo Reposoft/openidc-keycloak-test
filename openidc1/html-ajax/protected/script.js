@@ -1,4 +1,7 @@
 
+// Note that jQuery sends X-Requested-With but other AJAX libs might not
+// so see https://github.com/pingidentity/mod_auth_openidc/wiki/Cookies
+
 var ajaxtestGET = function(log) {
   $.ajax({
     url: '/protected/'
