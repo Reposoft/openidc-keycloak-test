@@ -34,6 +34,10 @@ services:
     #  - -Dkeycloak.migration.action=export
     #  - -Dkeycloak.migration.provider=dir
     #  - -Dkeycloak.migration.dir=/export
+  redis1:
+    image: redis
+    expose:
+      - "6379"
   openidc:
     build: ../openidc-jessie
     expose:
@@ -41,11 +45,12 @@ services:
     # For local browser; you also need "openidc" in your hosts file
     ports:
       - "80:80"
+    links:
+      - redis1:redis
+      # Commented out to disallow direct communication with keycloak; depends on hosting scenario
+      #- keycloak
     depends_on:
       - keycloak
-    # Don't allow direct communication with keycloak; depends on hosting scenario
-    #links:
-    #  - keycloak
     volumes:
       - ./html-ajax:/var/www/html
   keycloak-setup:
