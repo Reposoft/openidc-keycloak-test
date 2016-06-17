@@ -1,7 +1,7 @@
 FROM debian:jessie
 MAINTAINER hzandbelt@pingidentity.com
 
-ENV VERSION 1.8.8
+ENV VERSION 1.8.9
 ENV PATCHLEVEL 1
 ENV PKG libapache2-mod-auth-openidc_${VERSION}-${PATCHLEVEL}_amd64.deb
 
