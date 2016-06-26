@@ -14,6 +14,29 @@
         Log out
       </a>.
     <p>
+
+    <h2>Endpoint stuff</h2>
+    <p>Official docs oddly describe this under <a href="https://keycloak.gitbooks.io/securing-client-applications-guide/content/topics/oidc/oidc-generic.html">OpenID Connect &gt; Other OpenID Connect libraries</a><p>
+    <ul>
+      <li><a href="http://keycloak:8080/auth/realms/Testrealm/.well-known/openid-configuration">.well-known configuration</a></li>
+      <li><a href="http://keycloak:8080/auth/realms/Testrealm/protocol/openid-connect/userinfo">Userinfo</a></li>
+      <li><a href="http://keycloak:8080/auth/realms/Testrealm/protocol/openid-connect/certs">JWKs URI</a></li>
+    </ul>
+
+    <h2>Token experiment</h2>
+    <form action="http://keycloak:8080/auth/realms/Testrealm/protocol/openid-connect/token" method="post">
+      <dl>
+        <dt><label for="client_id">client_id</label></dt><dd><input name="client_id" value="testclient"/></dd>
+        <dt><label for="client_secret">client_secret</label></dt><dd><input name="client_secret" value="99f47cdf-089c-469b-a205-8e521cbcd6b7"/></dd>
+        <dt><label for="grant_type">grant_type</label></dt><dd><select name="grant_type"><option value="password">password</option></select></dd>
+        <dt><label for="username">username</label></dt><dd><input name="username"/></dd>
+        <dt><label for="password">password</label></dt><dd><input name="password"/></dd>
+        <dt></dt><dd><input type="submit"/></dd>
+      </dl>
+    </form>
+    <p>See also <a href="http://stackoverflow.com/questions/30222676/pingfederate-oauth-validate-access-token-using-apache-integration-kit">http://stackoverflow.com/questions/30222676/pingfederate-oauth-validate-access-token-using-apache-integration-kit</a>.</p>
+
+    <h2>AJAX (timeout, OIDCUnAuthAction, etc) testing</h2>
     <ul id="log"/>
     <!-- page content -->
   </body>
