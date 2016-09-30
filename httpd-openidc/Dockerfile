@@ -1,9 +1,13 @@
 
 FROM httpd:2.4.23
 
-ENV OPENIDC_VERSION 1.8.10.1
-ENV OPENIDC_VERSION_TGZ_URL https://github.com/pingidentity/mod_auth_openidc/archive/v$OPENIDC_VERSION.tar.gz
-ENV OPENIDC_VERSION_TGZ_SHA1 3a5e0faff757cc2922b84881f32d2d4aaa6be4f8
+ENV CJOSE_VERSION 0.4.1
+ENV CJOSE_DEB_URL https://mod-auth-openidc.org/download/libcjose_${CJOSE_VERSION}-1_amd64.deb
+ENV CJOSE_DEB_SHA1 8689d052e0ff1ee2dbbbc6648f64e81dc8f23530
+
+ENV OPENIDC_VERSION 2.0.0
+ENV OPENIDC_VERSION_TGZ_URL https://mod-auth-openidc.org/download/mod_auth_openidc-$OPENIDC_VERSION.tar.gz
+ENV OPENIDC_VERSION_TGZ_SHA1 86c6ba2c0e47227cd446ecabf0c408ee812558a9
 
 RUN depsRuntime=' \
 		libcurl3 ca-certificates \
@@ -28,6 +32,10 @@ RUN depsRuntime=' \
 	&& apt-get install -y --no-install-recommends $depsRuntime \
 	&& apt-get install -y --no-install-recommends $depsBuild \
 	&& rm -r /var/lib/apt/lists/* \
+	&& curl -SL "$CJOSE_DEB_URL" -o libcjose.deb \
+	&& echo "$CJOSE_DEB_SHA1 libcjose.deb" | sha1sum -c - \
+	&& dpkg -i libcjose.deb \
+	&& rm libcjose.deb \
 	&& curl -SL "$OPENIDC_VERSION_TGZ_URL" -o mod_auth_openidc-$OPENIDC_VERSION.tar.gz \
 	&& echo "$OPENIDC_VERSION_TGZ_SHA1 mod_auth_openidc-$OPENIDC_VERSION.tar.gz" | sha1sum -c - \
 	&& mkdir -p src/mod_auth_openidc \
