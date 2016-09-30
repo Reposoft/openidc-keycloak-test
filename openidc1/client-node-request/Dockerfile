@@ -1,4 +1,4 @@
 
-FROM solsson/node:5-run
+FROM solsson/node:6-run
 
 ADD app /usr/src/app
