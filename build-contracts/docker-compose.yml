@@ -41,10 +41,9 @@ services:
       - echo
       - "This was just a build job. Exiting."
   openidc:
-    #build: ./openidc
-    build: ../openidc-jessie
+    build: ./openidc
     depends_on:
-      #- httpd-openidc
+      - httpd-openidc
       - keycloak
     # Don't allow direct communication with keycloak; depends on hosting scenario
     #links:
@@ -55,7 +54,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./html-ajax:/var/www/html
+      - ./html-ajax:/usr/local/apache2/htdocs
   keycloak-setup:
     build: ./keycloak-setup
     links:
