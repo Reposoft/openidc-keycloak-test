@@ -4,7 +4,7 @@ FROM httpd@sha256:aa0711c4fc25264ce59b5f9315b555ba1252ad0fbd0e290634b693df2045a0
 
 ENV CJOSE_VERSION 0.4.1
 ENV CJOSE_DEB_URL https://mod-auth-openidc.org/download/libcjose_${CJOSE_VERSION}-1_amd64.deb
-ENV CJOSE_DEB_SHA1 8689d052e0ff1ee2dbbbc6648f64e81dc8f23530
+ENV CJOSE_DEB_SHA1 79c50385f6b412efeb822602d0668d41f5d9218b
 
 ENV OPENIDC_VERSION 2.0.0
 ENV OPENIDC_VERSION_TGZ_URL https://mod-auth-openidc.org/download/mod_auth_openidc-$OPENIDC_VERSION.tar.gz

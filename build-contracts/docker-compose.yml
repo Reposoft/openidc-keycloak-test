@@ -35,7 +35,7 @@ services:
     #  - -Dkeycloak.migration.provider=dir
     #  - -Dkeycloak.migration.dir=/export
   openidc:
-    build: ../openidc-jessie
+    build: ../httpd-openidc
     expose:
       - "80"
     # For local browser; you also need "openidc" in your hosts file
