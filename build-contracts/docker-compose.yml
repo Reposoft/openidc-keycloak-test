@@ -34,20 +34,27 @@ services:
     #  - -Dkeycloak.migration.action=export
     #  - -Dkeycloak.migration.provider=dir
     #  - -Dkeycloak.migration.dir=/export
-  openidc:
+  httpd-openidc:
     build: ../httpd-openidc
+    image: localhost:5000/reposoft/httpd-openidc
+    entrypoint:
+      - echo
+      - "This was just a build job. Exiting."
+  openidc:
+    build: ./openidc
+    depends_on:
+      - httpd-openidc
+      - keycloak
+    # Don't allow direct communication with keycloak; depends on hosting scenario
+    #links:
+    #  - keycloak
     expose:
       - "80"
     # For local browser; you also need "openidc" in your hosts file
     ports:
       - "80:80"
-    depends_on:
-      - keycloak
-    # Don't allow direct communication with keycloak; depends on hosting scenario
-    #links:
-    #  - keycloak
     volumes:
-      - ./html-ajax:/var/www/html
+      - ./html-ajax:/usr/local/apache2/htdocs
   keycloak-setup:
     build: ./keycloak-setup
     links:

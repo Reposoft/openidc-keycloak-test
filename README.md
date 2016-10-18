@@ -19,6 +19,6 @@ Until setup is fully automated see echo:s in [testclient1/keycloak-setup/import.
 
 If you can access `ports` locally, access the example site at http://openidc/, with something like this in `/etc/hosts` (IP being you docker machine's):
 ```
-192.168.99.100 keycloak
-192.168.99.100 openidc
+127.0.0.1 keycloak
+127.0.0.1 openidc
 ```
