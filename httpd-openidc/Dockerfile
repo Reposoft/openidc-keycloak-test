@@ -6,9 +6,9 @@ ENV CJOSE_VERSION 0.4.1
 ENV CJOSE_DEB_URL https://mod-auth-openidc.org/download/libcjose_${CJOSE_VERSION}-1_amd64.deb
 ENV CJOSE_DEB_SHA1 c3df394efe96c01b6fa67193f798152e65648e25
 
-ENV OPENIDC_VERSION 2.0.0
+ENV OPENIDC_VERSION 2.0.1rc5
 ENV OPENIDC_VERSION_TGZ_URL https://mod-auth-openidc.org/download/mod_auth_openidc-$OPENIDC_VERSION.tar.gz
-ENV OPENIDC_VERSION_TGZ_SHA1 86c6ba2c0e47227cd446ecabf0c408ee812558a9
+ENV OPENIDC_VERSION_TGZ_SHA1 3ba39dc281c8ee7b2890e6cd0dc8a6b4020a1e61
 
 RUN depsRuntime=' \
 		libcurl3 ca-certificates \
