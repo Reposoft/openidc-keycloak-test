@@ -7,6 +7,9 @@
     "enabled" : true,
     "totp" : false,
     "emailVerified" : false,
+    "firstName" : "Test",
+    "lastName" : "Openid",
+    "email" : "test1@example.net",
     "credentials" : [ {
       "type" : "password",
       "hashedSaltedValue" : "72SjVDs19PPoDcNX8qoj76L7G88rEAWZLAHIxBBIx8YtyhGh/UTAhMeycYKj6Mo/tSdwLCVXJyc2gmmUX3IV2w==",
