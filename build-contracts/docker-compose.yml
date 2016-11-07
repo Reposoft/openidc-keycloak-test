@@ -14,7 +14,9 @@ services:
     #  - --character-set-server=utf8mb4
     #  - --collation-server=utf8mb4_unicode_ci
   keycloak:
-    image: jboss/keycloak-mysql:2.3.0.Final
+    build:
+      context: ../keycloak-ha-mysql
+    image: solsson/keycloak-ha-mysql
     links:
       - mysql
     environment:
