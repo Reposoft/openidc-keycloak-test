@@ -31,7 +31,6 @@ services:
       MYSQL_PORT_3306_TCP_PORT: "3306"
     expose:
       - "8080"
-      - "9090"
     # Uncomment the following and docker-compose up keycloak again to export realms
     volumes:
       - ./keycloak-setup/export:/export
