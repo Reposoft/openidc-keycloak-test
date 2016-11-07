@@ -9,9 +9,10 @@ services:
       MYSQL_DATABASE: keycloak
       MYSQL_USER: keycloak
       MYSQL_PASSWORD: keycloak
-    command:
-      - --character-set-server=utf8mb4
-      - --collation-server=utf8mb4_unicode_ci
+    # Causes: Change Set META-INF/jpa-changelog-1.0.0.Final.xml::1.0.0.Final::sthorger@redhat.com failed.  Error: Specified key was too long; max key length is 767 bytes [Failed SQL: ALTER TABLE keycloak.REALM_SOCIAL_CONFIG ADD PRIMARY KEY (REALM_ID, NAME)]: liquibase.exception.DatabaseException: Specified key was too long; max key length is 767 bytes [Failed SQL: ALTER TABLE keycloak.REALM_SOCIAL_CONFIG ADD PRIMARY KEY (REALM_ID, NAME)]
+    #command:
+    #  - --character-set-server=utf8mb4
+    #  - --collation-server=utf8mb4_unicode_ci
   keycloak:
     build:
       context: ../keycloak-ha-mysql
