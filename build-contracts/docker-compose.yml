@@ -44,11 +44,9 @@ services:
     build: ./ha
     links:
       - keycloak
-    expose:
-      - "8080"
     # For local browser; you also need "keycloak" in your hosts file
     ports:
-      - "8080:8080"
+      - "8080:80"
   httpd-openidc:
     build: ../httpd-openidc
     image: localhost:5000/reposoft/httpd-openidc
