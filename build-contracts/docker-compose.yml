@@ -9,7 +9,9 @@ services:
       MYSQL_DATABASE: keycloak
       MYSQL_USER: keycloak
       MYSQL_PASSWORD: keycloak
-      # TODO collation stuff
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
   keycloak:
     build:
       context: ../keycloak-ha-mysql
