@@ -1,20 +1,22 @@
 {
   "realm" : "master",
   "users" : [ {
-    "id" : "b37e95f9-5518-46bc-9c87-145a53f0e936",
-    "createdTimestamp" : 1461231756328,
+    "id" : "014a45ff-9f29-4ff0-9d65-0d2557cad684",
+    "createdTimestamp" : 1477483346047,
     "username" : "admin",
     "enabled" : true,
     "totp" : false,
     "emailVerified" : false,
     "credentials" : [ {
       "type" : "password",
-      "hashedSaltedValue" : "iT/CVgZhD3BULMQ1WMyKUL27EnwRF/yFPxVpB7EKTmUg7ldKOP24v/NrnWfhDiEniS/uGlx79VLLDOLLOzpc0g==",
-      "salt" : "K0874viY3ja9TiE8KHIqKQ==",
-      "hashIterations" : 100000,
+      "hashedSaltedValue" : "W8HiJ0H6dPl8B+vUDxwDBj3iXkoX2bbmgPfsiSmVHAZXlUNrTRbY9sIpP9o9eVlQykWgJCh1aseaNBUzOCmM4Q==",
+      "salt" : "3sleNqX/b71P9b4A7ms4Fw==",
+      "hashIterations" : 20000,
       "counter" : 0,
       "algorithm" : "pbkdf2",
-      "digits" : 0
+      "digits" : 0,
+      "period" : 0,
+      "config" : { }
     } ],
     "requiredActions" : [ ],
     "realmRoles" : [ "admin", "offline_access" ],
