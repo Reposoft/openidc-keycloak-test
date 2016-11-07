@@ -31,10 +31,6 @@ services:
     expose:
       - "8080"
       - "9090"
-    # For local browser; you also need "keycloak" in your hosts file
-    ports:
-      - "8080:8080"
-      - "9990:9990"
     # Uncomment the following and docker-compose up keycloak again to export realms
     volumes:
       - ./keycloak-setup/export:/export
@@ -43,6 +39,15 @@ services:
     #  - -Dkeycloak.migration.action=export
     #  - -Dkeycloak.migration.provider=dir
     #  - -Dkeycloak.migration.dir=/export
+  keycloak-ha:
+    build: ./ha
+    links:
+      - keycloak
+    expose:
+      - "8080"
+    # For local browser; you also need "keycloak" in your hosts file
+    ports:
+      - "8080:8080"
   httpd-openidc:
     build: ../httpd-openidc
     image: localhost:5000/reposoft/httpd-openidc
@@ -53,7 +58,7 @@ services:
     build: ./openidc
     depends_on:
       - httpd-openidc
-      - keycloak
+      - keycloak-ha
     # Don't allow direct communication with keycloak; depends on hosting scenario
     #links:
     #  - keycloak
