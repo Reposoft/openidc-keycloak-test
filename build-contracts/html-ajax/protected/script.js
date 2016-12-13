@@ -1,7 +1,8 @@
 
 var ajaxtestGET = function(log) {
   $.ajax({
-    url: '/protected/'
+    url: '/protected/',
+    crossDomain: true
   }).fail(function( jqXHR, textStatus, errorThrown ) {
     console.log('Fail', jqXHR, textStatus, errorThrown);
     log('AJAX failed');
@@ -17,7 +18,8 @@ var ajaxtestGET = function(log) {
 var ajaxtestHEADthenGET = function(log) {
   $.ajax({
     method: 'HEAD',
-    url: '/protected/'
+    url: '/protected/',
+    crossDomain: true
   }).fail(function( jqXHR, textStatus, errorThrown ) {
     console.log('Fail', jqXHR, textStatus, errorThrown);
     log('AJAX HEAD request failed, status ' + jqXHR.status + ' ' + textStatus);
