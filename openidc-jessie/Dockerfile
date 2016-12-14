@@ -8,7 +8,7 @@ ENV CJOSE_PKG libcjose_${CJOSE_VERSION}-1_amd64.deb
 RUN curl -s -L -o ~/${CJOSE_PKG} https://mod-auth-openidc.org/download/${CJOSE_PKG}
 RUN dpkg -i ~/${CJOSE_PKG} && echo ok || echo ko
 
-ENV MOD_AUTH_OPENIDC_VERSION 2.1.1
+ENV MOD_AUTH_OPENIDC_VERSION 2.1.3
 ENV MOD_AUTH_OPENIDC_PKG libapache2-mod-auth-openidc_${MOD_AUTH_OPENIDC_VERSION}-1_amd64.deb
 RUN curl -s -L -o ~/${MOD_AUTH_OPENIDC_PKG} https://mod-auth-openidc.org/download/${MOD_AUTH_OPENIDC_PKG}
 RUN dpkg -i ~/${MOD_AUTH_OPENIDC_PKG} && echo ok || echo ko
