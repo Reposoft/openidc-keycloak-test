@@ -37,7 +37,7 @@ var ajaxtestHEADthenGET = function(log) {
   });
 };
 
-var ajaxtest = ajaxtestHEADthenGET;
+var ajaxtest = ajaxtestGET;
 var ajaxinterval = 5000;
 
 $(document).ready(function() {
