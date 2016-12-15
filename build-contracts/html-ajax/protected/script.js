@@ -55,6 +55,7 @@ $(document).ready(function() {
 
   log('Running an AJAX test every ' + ajaxinterval + 'ms');
   ajaxtest(log);
-  setInterval(ajaxtest.bind(null, log), ajaxinterval);
+  setInterval(ajaxtest.bind(null, log, false), ajaxinterval);
+  setTimeout(ajaxtest.bind(null, log, true), ajaxinterval / 2);
 
 });
