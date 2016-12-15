@@ -38,7 +38,7 @@ var ajaxtestHEADthenGET = function(log) {
 };
 
 var ajaxtest = ajaxtestGET;
-var ajaxinterval = 5000;
+var ajaxinterval = 60000;
 
 $(document).ready(function() {
 
