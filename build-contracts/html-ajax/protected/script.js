@@ -1,7 +1,7 @@
 
 var ajaxtestGET = function(log, withXRequestedWith) {
   $.ajax({
-    url: '/protected/?crossDomain=' + !withXRequestedWith,
+    url: '/protected/?crossDomain=' + !withXRequestedWith + '&t=' + Date.now(),
     crossDomain: !withXRequestedWith
   }).fail(function( jqXHR, textStatus, errorThrown ) {
     console.log('Fail', jqXHR, textStatus, errorThrown);
