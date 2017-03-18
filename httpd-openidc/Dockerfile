@@ -10,6 +10,8 @@ ENV CJOSE_VERSION 0.4.1
 ENV CJOSE_DEB_URL https://github.com/pingidentity/mod_auth_openidc/releases/download/v2.1.0/libcjose_$CJOSE_VERSION-1_amd64.deb
 ENV CJOSE_DEB_SHA1 21a2aa687c7e151a4f72cae096e91b857da5294f
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN depsRuntime=' \
 		libcurl3 ca-certificates \
 		libpcre3 \
