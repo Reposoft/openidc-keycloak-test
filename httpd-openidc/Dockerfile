@@ -12,13 +12,13 @@ ENV CJOSE_DEB_SHA1 21a2aa687c7e151a4f72cae096e91b857da5294f
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN depsRuntime=' \
+RUN depsRuntime=" \
 		libcurl3 ca-certificates \
 		libpcre3 \
 		libjansson4 \
 		libhiredis0.10 \
-	' \
-  && depsBuild=' \
+	" \
+  && depsBuild=" \
 		curl \
 		gcc \
 		make \
@@ -29,7 +29,7 @@ RUN depsRuntime=' \
 		pkg-config \
 		dh-autoreconf \
 		libhiredis-dev \
-	' \
+	" \
 	set -x \
 	&& apt-get update \
 	&& apt-get install -y --no-install-recommends $depsRuntime \
