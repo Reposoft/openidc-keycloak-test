@@ -23,7 +23,7 @@ RUN depsRuntime=" \
 		gcc \
 		make \
 		libpcre3-dev \
-		libssl-dev \
+		libssl-dev=$OPENSSL_VERSION \
 		libcurl4-openssl-dev \
 		libjansson-dev \
 		pkg-config \
