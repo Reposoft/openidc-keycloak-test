@@ -1,6 +1,6 @@
 
 # https://github.com/docker-library/repo-info/blob/master/repos/httpd/tag-details.md
-FROM httpd:2.4.25@sha256:0d817a924bed1a216f12a0f4947b5f8a2f173bd5a9cebfe1382d024287154c99
+FROM httpd:2.4.25@sha256:4612fba4347bd87eaeecd5c522d844f26cc4065b45eef9291277497946b7a86c
 
 ENV OPENIDC_VERSION v2.1.6
 ENV OPENIDC_VERSION_TGZ_URL https://github.com/pingidentity/mod_auth_openidc/archive/$OPENIDC_VERSION.tar.gz
