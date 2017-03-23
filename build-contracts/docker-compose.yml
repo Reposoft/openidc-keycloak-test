@@ -13,13 +13,15 @@ services:
       # https://issues.jboss.org/browse/KEYCLOAK-3873
       - --character-set-server=utf8
       - --collation-server=utf8_unicode_ci
+    volumes:
+      - ../mysql-init:/docker-entrypoint-initdb.d
   keycloak:
     image: jboss/keycloak-mysql:2.5.5.Final
     links:
       - mysql
     environment:
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: openidctest
+      #KEYCLOAK_USER: admin
+      #KEYCLOAK_PASSWORD: openidctest
       MYSQL_USER: keycloak
       MYSQL_PASSWORD: keycloak
       # Workaround for container using legacy Docker links, resulting in
