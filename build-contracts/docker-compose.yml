@@ -1,7 +1,7 @@
 version: '2'
 services:
   mysql:
-    image: mariadb:10.1.21
+    image: mariadb:10.1.23
     expose:
       - "3306"
     environment:
