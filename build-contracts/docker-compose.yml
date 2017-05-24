@@ -14,13 +14,13 @@ services:
       - --character-set-server=utf8
       - --collation-server=utf8_unicode_ci
   keycloak:
-    image: jboss/keycloak-mysql:2.5.5.Final
+    image: jboss/keycloak-mysql:3.1.0.Final
     links:
       - mysql
     environment:
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: openidctest
-      MYSQL_USER: keycloak
+      MYSQL_USERNAME: keycloak
       MYSQL_PASSWORD: keycloak
       # Workaround for container using legacy Docker links, resulting in
       # "WFLYCTL0211: Cannot resolve expression 'jdbc:mysql://${env.MYSQL_PORT_3306_TCP_ADDR}:${env.MYSQL_PORT_3306_TCP_PORT}
