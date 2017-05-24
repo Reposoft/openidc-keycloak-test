@@ -1,24 +1,31 @@
 version: '2'
 services:
-  postgres:
-    image: postgres:9.6
+  mysql:
+    image: mariadb:10.1.23
     expose:
-      - "5432"
+      - "3306"
     environment:
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: keycloak
+      MYSQL_ROOT_PASSWORD: openidctest
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: keycloak
+    command:
+      # https://issues.jboss.org/browse/KEYCLOAK-3873
+      - --character-set-server=utf8
+      - --collation-server=utf8_unicode_ci
   keycloak:
-    image: jboss/keycloak-postgres:2.4.0.Final
+    image: jboss/keycloak-mysql:2.5.5.Final
     links:
-      - postgres
+      - mysql
     environment:
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: openidctest
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: keycloak
       # Workaround for container using legacy Docker links, resulting in
-      # "WFLYCTL0211: Cannot resolve expression 'jdbc:postgresql://${env.POSTGRES_PORT_5432_TCP_ADDR}...")n
-      POSTGRES_PORT_5432_TCP_ADDR: postgres
+      # "WFLYCTL0211: Cannot resolve expression 'jdbc:mysql://${env.MYSQL_PORT_3306_TCP_ADDR}:${env.MYSQL_PORT_3306_TCP_PORT}
+      MYSQL_PORT_3306_TCP_ADDR: mysql
+      MYSQL_PORT_3306_TCP_PORT: "3306"
     expose:
       - "8080"
       - "9090"
