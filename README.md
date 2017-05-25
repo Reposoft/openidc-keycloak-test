@@ -20,6 +20,16 @@ Until setup is fully automated see echo:s in [testclient1/keycloak-setup/import.
 
 If you can access `ports` locally, access the example site at http://openidc/, with something like this in `/etc/hosts` (IP being you docker machine's):
 ```
-127.0.0.1 keycloak
 127.0.0.1 openidc
+```
+
+Direct access to keycloak is at :8080. Auth should understand proxy, according to:
+ * https://github.com/jboss-dockerfiles/keycloak/tree/master/server#enabling-proxy-address-forwarding
+ * https://docs.jboss.org/author/display/WFLY8/Undertow+subsystem+configuration#Undertowsubsystemconfiguration-HTTPConnector
+
+## Export and import
+
+Export [seems to](https://keycloak.gitbooks.io/documentation/server_admin/topics/export-import.html) require restart.
+```
+docker-compose -f build-contracts/docker-compose.yml -f build-contracts/export.docker-compose.yml up keycloak
 ```
