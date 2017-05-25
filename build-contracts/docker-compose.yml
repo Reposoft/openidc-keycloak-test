@@ -26,6 +26,7 @@ services:
       # "WFLYCTL0211: Cannot resolve expression 'jdbc:mysql://${env.MYSQL_PORT_3306_TCP_ADDR}:${env.MYSQL_PORT_3306_TCP_PORT}
       MYSQL_PORT_3306_TCP_ADDR: mysql
       MYSQL_PORT_3306_TCP_PORT: "3306"
+      PROXY_ADDRESS_FORWARDING: "true"
     expose:
       - "8080"
       - "9090"
