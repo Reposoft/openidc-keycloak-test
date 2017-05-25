@@ -23,3 +23,10 @@ If you can access `ports` locally, access the example site at http://openidc/, w
 127.0.0.1 keycloak
 127.0.0.1 openidc
 ```
+
+## Export and import
+
+Export [seems to](https://keycloak.gitbooks.io/documentation/server_admin/topics/export-import.html) require restart.
+```
+docker-compose -f build-contracts/docker-compose.yml -f build-contracts/export.docker-compose.yml up keycloak
+```
