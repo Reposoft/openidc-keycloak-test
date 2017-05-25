@@ -1,8 +1,8 @@
 {
   "realm" : "Testrealm",
   "users" : [ {
-    "id" : "c11e38b3-ac64-41c7-9d0f-40ca55defc8d",
-    "createdTimestamp" : 1477485701643,
+    "id" : "1fb035dc-ffc6-46df-808f-b3226fb15953",
+    "createdTimestamp" : 1495721665397,
     "username" : "test1",
     "enabled" : true,
     "totp" : false,
@@ -12,16 +12,17 @@
     "email" : "test1@example.net",
     "credentials" : [ {
       "type" : "password",
-      "hashedSaltedValue" : "72SjVDs19PPoDcNX8qoj76L7G88rEAWZLAHIxBBIx8YtyhGh/UTAhMeycYKj6Mo/tSdwLCVXJyc2gmmUX3IV2w==",
-      "salt" : "tyjH4pAUQO/fY176uWiqIA==",
+      "hashedSaltedValue" : "HzIBQ3T21TkxmK2U4iCpv3Dn13ncrityMtp34tmo5sS659uDHDqozbXDbVfNpP9xJxsCbtXRtausO35pf5hCgg==",
+      "salt" : "LD9dWhygFUrYd+sjKJmIEA==",
       "hashIterations" : 20000,
       "counter" : 0,
       "algorithm" : "pbkdf2",
       "digits" : 0,
       "period" : 0,
-      "createdDate" : 1477485718898,
+      "createdDate" : 1495721679686,
       "config" : { }
     } ],
+    "disableableCredentialTypes" : [ "password" ],
     "requiredActions" : [ ],
     "realmRoles" : [ "uma_authorization", "offline_access" ],
     "clientRoles" : {
