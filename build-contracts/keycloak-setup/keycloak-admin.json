@@ -4,5 +4,6 @@
   "min-time-between-jwks-requests" : 0,
   "resource" : "master-realm",
   "bearer-only" : true,
+  "client-id": "master-realm",
   "secret": "0ec9e23a-4b62-4b93-ba2c-01b1c0f28c29"
 }
