@@ -1,0 +1,16 @@
+{
+  "name": "openidc-keycloak-test-setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha ./"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "4.0.0",
+    "keycloak-auth-utils": "3.1.0",
+    "mocha": "3.4.2"
+  }
+}

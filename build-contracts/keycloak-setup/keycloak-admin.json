@@ -1,0 +1,7 @@
+{
+  "server-url" : "http://localhost:8080/auth",
+  "realm" : "Master",
+  "min-time-between-jwks-requests" : 0,
+  "resource" : "master-realm",
+  "public-client" : true
+}
