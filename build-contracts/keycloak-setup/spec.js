@@ -9,6 +9,20 @@ describe("Admin access", function() {
 
   describe("Authenticate as admin:openidctest", function() {
 
+    var grant;
+
+    it("Gets a token", function() {
+      const config = new KeycloakAuth.Config('./keycloak-admin.json');
+      const manager = new KeycloakAuth.GrantManager(config);
+
+      return manager.obtainDirectly('admin', 'openidctest').then((g) => grant = g);
+    });
+
+    it("Contains interesting stuff", function() {
+      expect(grant).to.be.an('object').and.have.a.property('access_token');
+      console.log(JSON.stringify(grant.access_token.content, null, '  '));
+    });
+
   });
 
 
