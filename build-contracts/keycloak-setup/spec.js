@@ -18,19 +18,23 @@ describe("Testrealm access (if import passed)", function() {
 
   describe("Authenticate as test1:test1", function() {
 
-    var token;
+    var grant;
 
-    it("Gets a token", function(done) {
+    it("Gets a token", function() {
       const config = new KeycloakAuth.Config('./keycloak-test1.json');
       const manager = new KeycloakAuth.GrantManager(config);
 
-      var auth = manager.obtainDirectly('test1', 'test1')
-        .then((grant) => expect(grant).to.be.an('object').and.have.a.property('access_token'))
-        .then((access) => token = access);
+      return manager.obtainDirectly('test1', 'test1').then((g) => grant = g);
     });
 
     it("Contains interesting stuff", function() {
-      console.log(JSON.stringify(token, null, '  '));
+      expect(grant).to.be.an('object').and.have.a.property('access_token');
+      console.log(JSON.stringify(grant.access_token.content, null, '  '));
+    });
+
+    it("Contains more interesting stuff", function() {
+      expect(grant).to.have.a.property('id_token');
+      expect(grant).to.have.a.property('refresh_token');
     });
 
   });
