@@ -1,14 +1,15 @@
 
 # https://github.com/docker-library/repo-info/blob/master/repos/httpd/tag-details.md
-FROM httpd:2.4.25@sha256:4612fba4347bd87eaeecd5c522d844f26cc4065b45eef9291277497946b7a86c
+FROM httpd:2.4.25@sha256:72b55a7c15a4ee3d56ff19f83b57b82287714f91070b1f556a54e90da5eee3fa
 
-ENV OPENIDC_VERSION v2.1.6
+ENV OPENIDC_VERSION v2.3.0
 ENV OPENIDC_VERSION_TGZ_URL https://github.com/pingidentity/mod_auth_openidc/archive/$OPENIDC_VERSION.tar.gz
-ENV OPENIDC_VERSION_TGZ_SHA1 5f45c6a6b5111f007fbfd52efd9ade654bfee905
+ENV OPENIDC_VERSION_TGZ_SHA1 a958d14d38a9800cf131cbd030dadb0bfbd6e778
 
-ENV CJOSE_VERSION 0.4.1
-ENV CJOSE_DEB_URL https://github.com/pingidentity/mod_auth_openidc/releases/download/v2.1.0/libcjose_$CJOSE_VERSION-1_amd64.deb
-ENV CJOSE_DEB_SHA1 21a2aa687c7e151a4f72cae096e91b857da5294f
+ENV CJOSE_VERSION 0.5.1
+ENV CJOSE_DEB_URL https://github.com/pingidentity/mod_auth_openidc/releases/download/v2.3.0/libcjose0_$CJOSE_VERSION-1.jessie.1_amd64.deb
+ENV CJOSE_DEB_SHA1 cad77328cf33319e85267a1e9f804912aed3bb5d
+ENV CJOSE_DEV_DEB_URL https://mod-auth-openidc.org/download/libcjose-dev_$CJOSE_VERSION-1~jessie+1_amd64.deb
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -39,6 +40,9 @@ RUN depsRuntime=" \
 	&& echo "$CJOSE_DEB_SHA1 libcjose.deb" | sha1sum -c - \
 	&& dpkg -i libcjose.deb \
 	&& rm libcjose.deb \
+	&& curl -SL "$CJOSE_DEV_DEB_URL" -o libcjose-dev.deb \
+	&& dpkg -i libcjose-dev.deb \
+	&& rm libcjose-dev.deb \
 	&& curl -SL "$OPENIDC_VERSION_TGZ_URL" -o mod_auth_openidc-$OPENIDC_VERSION.tar.gz \
 	&& echo "$OPENIDC_VERSION_TGZ_SHA1 mod_auth_openidc-$OPENIDC_VERSION.tar.gz" | sha1sum -c - \
 	&& mkdir -p src/mod_auth_openidc \
