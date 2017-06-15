@@ -8,10 +8,11 @@ services:
       POSTGRES_USER: keycloak
       POSTGRES_PASSWORD: keycloak
   keycloak:
-    image: jboss/keycloak-postgres:2.4.0.Final
+    image: jboss/keycloak-postgres:3.1.0.Final
     links:
       - postgres
     environment:
+      PROXY_ADDRESS_FORWARDING: "true"
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: openidctest
       POSTGRES_USER: keycloak
@@ -26,14 +27,6 @@ services:
     ports:
       - "8080:8080"
       - "9990:9990"
-    # Uncomment the following and docker-compose up keycloak again to export realms
-    volumes:
-      - ./keycloak-setup/export:/export
-    #entrypoint:
-    #  - /opt/jboss/keycloak/bin/standalone.sh
-    #  - -Dkeycloak.migration.action=export
-    #  - -Dkeycloak.migration.provider=dir
-    #  - -Dkeycloak.migration.dir=/export
   httpd-openidc:
     build: ../httpd-openidc
     image: localhost:5000/reposoft/httpd-openidc

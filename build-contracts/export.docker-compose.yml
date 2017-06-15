@@ -1,0 +1,11 @@
+# use as additional -f with docker-compose to trigger export
+version: '2'
+services:
+  keycloak:
+    volumes:
+      - ./keycloak-setup/export:/export
+    entrypoint:
+      - /opt/jboss/keycloak/bin/standalone.sh
+      - -Dkeycloak.migration.action=export
+      - -Dkeycloak.migration.provider=dir
+      - -Dkeycloak.migration.dir=/export
