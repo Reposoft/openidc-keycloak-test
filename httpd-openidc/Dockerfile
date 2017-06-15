@@ -6,9 +6,9 @@ ENV OPENIDC_VERSION v2.3.0
 ENV OPENIDC_VERSION_TGZ_URL https://github.com/pingidentity/mod_auth_openidc/archive/$OPENIDC_VERSION.tar.gz
 ENV OPENIDC_VERSION_TGZ_SHA1 a958d14d38a9800cf131cbd030dadb0bfbd6e778
 
-ENV CJOSE_VERSION 0.4.1
-ENV CJOSE_DEB_URL https://github.com/pingidentity/mod_auth_openidc/releases/download/v2.1.0/libcjose_$CJOSE_VERSION-1_amd64.deb
-ENV CJOSE_DEB_SHA1 21a2aa687c7e151a4f72cae096e91b857da5294f
+ENV CJOSE_VERSION 0.5.1
+ENV CJOSE_DEB_URL https://github.com/pingidentity/mod_auth_openidc/releases/download/v2.3.0/libcjose0_$CJOSE_VERSION-1.jessie.1_amd64.deb
+ENV CJOSE_DEB_SHA1 cad77328cf33319e85267a1e9f804912aed3bb5d
 
 ENV DEBIAN_FRONTEND noninteractive
 
