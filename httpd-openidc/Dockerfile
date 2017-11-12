@@ -1,10 +1,10 @@
 
 # https://github.com/docker-library/repo-info/blob/master/repos/httpd/tag-details.md
-FROM httpd:2.4.27@sha256:5b35d13089db73df620f4c198f5a4bfa56b8fe45a0364f343df9a26d874fef6c
+FROM httpd:2.4.29@sha256:8ac08d0fdc49f2dc83bf5dab36c029ffe7776f846617335225d2796c74a247b4
 
-ENV OPENIDC_VERSION 2.3.1
+ENV OPENIDC_VERSION 2.3.2
 ENV OPENIDC_VERSION_DEB_URL https://github.com/pingidentity/mod_auth_openidc/releases/download/v$OPENIDC_VERSION/libapache2-mod-auth-openidc_$OPENIDC_VERSION-1.jessie.1_amd64.deb
-ENV OPENIDC_VERSION_DEB_SHA1 6a7bdcdc4d9356426a75d43aa2eba86780784327
+ENV OPENIDC_VERSION_DEB_SHA1 35da5c93140c4467163c17624872d6433897c463
 
 ENV CJOSE_VERSION 0.5.1
 ENV CJOSE_DEB_URL https://github.com/pingidentity/mod_auth_openidc/releases/download/v2.3.0/libcjose0_$CJOSE_VERSION-1.jessie.1_amd64.deb

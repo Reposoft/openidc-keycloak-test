@@ -8,7 +8,7 @@ services:
       POSTGRES_USER: keycloak
       POSTGRES_PASSWORD: keycloak
   keycloak:
-    image: jboss/keycloak-postgres:3.1.0.Final
+    image: jboss/keycloak:3.4.0.Final@sha256:73f3325c9bf9518cb1a2661ff1d1e365cfeb51b44a323f4cfc23040f3d84e6ef
     links:
       - postgres
     environment:
