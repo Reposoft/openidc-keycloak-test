@@ -22,11 +22,9 @@ services:
       POSTGRES_PORT_5432_TCP_ADDR: postgres
     expose:
       - "8080"
-      - "9090"
-    # For local browser; you also need "keycloak" in your hosts file
+      - "9990"
     ports:
       - "8080:8080"
-      - "9990:9990"
   httpd-openidc:
     build: ../httpd-openidc
     image: localhost:5000/reposoft/httpd-openidc
