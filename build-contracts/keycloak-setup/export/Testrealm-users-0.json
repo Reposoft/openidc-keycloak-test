@@ -1,8 +1,8 @@
 {
   "realm" : "Testrealm",
   "users" : [ {
-    "id" : "ad1e0f60-dd68-48a3-80e5-f8106329c3f3",
-    "createdTimestamp" : 1495722085372,
+    "id" : "90ddaf6e-6118-4569-82e6-90deafc550da",
+    "createdTimestamp" : 1510689239180,
     "username" : "test1",
     "enabled" : true,
     "totp" : false,
@@ -12,14 +12,14 @@
     "email" : "test1@example.net",
     "credentials" : [ {
       "type" : "password",
-      "hashedSaltedValue" : "9ECfgutZvTKru6guZtaxNON3JNBUCk9hsp/0vrckoYFWmkFAVkoAgO21bP2bsCMYMAGvS8zRQi5HJdVcW2x/dg==",
-      "salt" : "lBxnQwZKzUhMlL20iSgjwQ==",
-      "hashIterations" : 20000,
+      "hashedSaltedValue" : "gveegMSBD0qr5fIJr5sKaxell+IiR520ArH/Nneb8I8ea2UIFOyO5QlfRGOvZP/6hbCMVxhAlg/mUEeOVrjNTA==",
+      "salt" : "THkmY8KB+XQpdN3RG0RtGw==",
+      "hashIterations" : 27500,
       "counter" : 0,
-      "algorithm" : "pbkdf2",
+      "algorithm" : "pbkdf2-sha256",
       "digits" : 0,
       "period" : 0,
-      "createdDate" : 1495722095099,
+      "createdDate" : 1510689250281,
       "config" : { }
     } ],
     "disableableCredentialTypes" : [ "password" ],
@@ -28,6 +28,7 @@
     "clientRoles" : {
       "account" : [ "manage-account", "view-profile" ]
     },
+    "notBefore" : 0,
     "groups" : [ ]
   } ]
 }
