@@ -13,5 +13,5 @@ services:
         -Dkeycloak.migration.action=export
         -Dkeycloak.migration.provider=dir
         -Dkeycloak.migration.dir=/export
-      # -Dkeycloak.migration.realmName=Testrealm
-      # -Dkeycloak.migration.usersExportStrategy=SAME_FILE
+        -Dkeycloak.migration.realmName=Testrealm
+        -Dkeycloak.migration.usersExportStrategy=SAME_FILE

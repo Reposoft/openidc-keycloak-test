@@ -1,7 +1,7 @@
 {
   "realm" : "Testrealm",
   "users" : [ {
-    "id" : "c11e38b3-ac64-41c7-9d0f-40ca55defc8d",
+    "id" : "f77e92be-b516-4fce-8201-9d10bdc8d6d7",
     "createdTimestamp" : 1477485701643,
     "username" : "test1",
     "enabled" : true,
@@ -22,11 +22,13 @@
       "createdDate" : 1477485718898,
       "config" : { }
     } ],
+    "disableableCredentialTypes" : [ "password" ],
     "requiredActions" : [ ],
     "realmRoles" : [ "uma_authorization", "offline_access" ],
     "clientRoles" : {
       "account" : [ "manage-account", "view-profile" ]
     },
+    "notBefore" : 0,
     "groups" : [ ]
   } ]
 }
