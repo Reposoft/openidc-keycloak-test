@@ -44,6 +44,8 @@ services:
     # For local browser; you also need "openidc" in your hosts file
     ports:
       - "80:80"
+    command:
+      - -DLOGLEVEL=info
     volumes:
       - ./html-ajax:/var/www/html
   keycloak-setup:

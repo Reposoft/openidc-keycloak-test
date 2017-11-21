@@ -57,7 +57,11 @@ WORKDIR /etc/apache2
 
 EXPOSE 80
 
-# Allow loglevel "debug" and "info"
-ENV LOGLEVEL warn
+ENTRYPOINT ["apache2ctl", "-DFOREGROUND"]
 
-ENTRYPOINT ["apache2ctl", "-DFOREGROUND", "-DLOGLEVEL=$LOGLEVEL"]
+RUN set -e; \
+  set -x; \
+  sed -i 's|^LogLevel warn|Include loglevels.conf|' apache2.conf; \
+	for L in warn info debug; do echo "<IfDefine LOGLEVEL=$L>\n  LogLevel $L\n</IfDefine>" >> loglevels.conf; done
+
+CMD ["-DLOGLEVEL=info"]
