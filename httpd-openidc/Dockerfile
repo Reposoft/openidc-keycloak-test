@@ -38,6 +38,29 @@ RUN depsRuntime=" \
   && rm -r /var/lib/apt/lists/* \
   && rm -rf /var/log/dpkg.log /var/log/alternatives.log /var/log/apt
 
+# Configure logs as in https://github.com/docker-library/httpd/blob/master/2.4/Dockerfile
+# and disable some things that will probably not be needed with mod_auth_openidc
+
+RUN set -e; \
+  set -x; \
+  a2disconf serve-cgi-bin; \
+  a2dissite 000-default; \
+  a2dismod access_compat; \
+  sed -ri -e 's!^(\s*CustomLog)\s+\S+!\1 /proc/self/fd/1!g' \
+    /etc/apache2/conf-available/other-vhosts-access-log.conf \
+    /etc/apache2/sites-available/000-default.conf \
+    /etc/apache2/sites-available/default-ssl.conf; \
+  sed -ri -e 's!^(\s*ErrorLog)\s+\S+!\1 /proc/self/fd/2!g' \
+    /etc/apache2/apache2.conf; \
+  mkdir /etc/apache2/conf; \
+  echo "IncludeOptional conf/*.conf" > /etc/apache2/sites-available/docker-workdir.conf; \
+  a2ensite docker-workdir
+
+WORKDIR /etc/apache2
+
 EXPOSE 80
 
-ENTRYPOINT ["apache2ctl", "-DFOREGROUND"]
+# Allow loglevel "debug" and "info"
+ENV LOGLEVEL warn
+
+ENTRYPOINT ["apache2ctl", "-DFOREGROUND", "-DLOGLEVEL=$LOGLEVEL"]

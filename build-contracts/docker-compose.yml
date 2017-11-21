@@ -45,7 +45,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./html-ajax:/usr/local/apache2/htdocs
+      - ./html-ajax:/var/www/html
   keycloak-setup:
     build: ./keycloak-setup
     links:
