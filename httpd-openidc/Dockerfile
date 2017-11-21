@@ -51,10 +51,7 @@ RUN set -e; \
     /etc/apache2/sites-available/000-default.conf \
     /etc/apache2/sites-available/default-ssl.conf; \
   sed -ri -e 's!^(\s*ErrorLog)\s+\S+!\1 /proc/self/fd/2!g' \
-    /etc/apache2/apache2.conf; \
-  mkdir /etc/apache2/conf; \
-  echo "IncludeOptional conf/*.conf" > /etc/apache2/sites-available/docker-workdir.conf; \
-  a2ensite docker-workdir
+    /etc/apache2/apache2.conf
 
 WORKDIR /etc/apache2
 
