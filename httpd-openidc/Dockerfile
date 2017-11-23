@@ -1,6 +1,4 @@
-
-# https://github.com/docker-library/repo-info/blob/master/repos/httpd/tag-details.md
-FROM httpd:2.4.29@sha256:8ac08d0fdc49f2dc83bf5dab36c029ffe7776f846617335225d2796c74a247b4
+FROM solsson/httpd-stretch@sha256:bc26155ed0747ab1fc2af6a85e78cd2ffa801ba20488eaa87ad748e1197d0d29
 
 ENV OPENIDC_VERSION 2.3.3
 ENV OPENIDC_VERSION_DEB_URL https://github.com/pingidentity/mod_auth_openidc/releases/download/v$OPENIDC_VERSION/libapache2-mod-auth-openidc_$OPENIDC_VERSION-1.jessie.1_amd64.deb
