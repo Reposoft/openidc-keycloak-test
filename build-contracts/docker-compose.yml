@@ -31,11 +31,17 @@ services:
     entrypoint:
       - echo
       - "This was just a build job. Exiting."
+  redis:
+    image: redis:4.0.2@sha256:cd277716dbff2c0211c8366687d275d2b53112fecbf9d6c86e9853edb0900956
+    expose:
+      - "6379"
   openidc:
     build: ./openidc
     depends_on:
       - httpd-openidc
+    links:
       - keycloak
+      - redis
     # Don't allow direct communication with keycloak; depends on hosting scenario
     #links:
     #  - keycloak
