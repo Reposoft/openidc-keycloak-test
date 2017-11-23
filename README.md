@@ -10,10 +10,12 @@ See [docker-compose.yml](https://github.com/Reposoft/openidc-keycloak-test/blob/
 Might be run like this:
 ```
 compose="docker-compose -f build-contracts/docker-compose.yml"
-$compose up --build -d postgres keycloak openidc
+$compose up --build -d keycloak openidc
 $compose up --build keycloak-setup #TODO
 $compose up --build -d testclient
 $compose logs -f
+# test session cache
+$compose up -d keycloak openidc2
 ```
 
 Until setup is fully automated see echo:s in [testclient1/keycloak-setup/import.sh](https://github.com/Reposoft/openidc-keycloak-test/blob/keycloak-setup-import/build-contracts/keycloak-setup/import.sh).

@@ -31,23 +31,46 @@ services:
     entrypoint:
       - echo
       - "This was just a build job. Exiting."
+  redis:
+    image: redis:4.0.2@sha256:cd277716dbff2c0211c8366687d275d2b53112fecbf9d6c86e9853edb0900956
+    expose:
+      - "6379"
   openidc:
     build: ./openidc
     depends_on:
       - httpd-openidc
-      - keycloak
-    # Don't allow direct communication with keycloak; depends on hosting scenario
-    #links:
+    links:
+    # Commented out to disallow direct communication with keycloak; depends on hosting scenario
     #  - keycloak
+      - redis
     expose:
       - "80"
-    # For local browser; you also need "openidc" in your hosts file
     ports:
       - "80:80"
     command:
       - -DLOGLEVEL=info
     volumes:
       - ./html-ajax:/usr/local/apache2/htdocs
+  openidc2:
+    build: ./openidc
+    depends_on:
+      - httpd-openidc
+    links:
+      - redis
+    ports:
+      - "2080:80"
+    volumes:
+      - ./html-ajax:/usr/local/apache2/htdocs
+    entrypoint:
+      - /bin/bash
+      - -ce
+      - >
+        sed -i 's|http://openidc/|http://openidc:2080/|' conf/000-default.conf;
+        echo "This instance will test cache sharing when auth happened at the first instance and this one can't reach keycloak";
+        sed -i 's|http://keycloak:8080/|http://keycloak-access-not-allowed-from-instance-2:8080/|' conf/000-default.conf;
+        sed -i "s|ServerName openidc|ServerName openidc\n  ErrorDocument 500 '500: expected if instance 2 sees no session cache, or tries to revalidate'|" conf/000-default.conf;
+        cat conf/000-default.conf | grep 'http://';
+        httpd -DFOREGROUND -DLOGLEVEL=debug
   keycloak-setup:
     build: ./keycloak-setup
     links:
