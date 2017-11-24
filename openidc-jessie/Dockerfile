@@ -5,12 +5,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certifi
 
 ENV CJOSE_VERSION 0.5.1
 ENV CJOSE_PKG libcjose0_${CJOSE_VERSION}-1.jessie.1_amd64.deb
-RUN curl -s -L -o ~/${CJOSE_PKG} https://github.com/pingidentity/mod_auth_openidc/releases/download/v2.3.0/${CJOSE_PKG}
+RUN curl -s -L -o ~/${CJOSE_PKG} https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.3.0/${CJOSE_PKG}
 RUN dpkg -i ~/${CJOSE_PKG} && echo ok || echo ko
 
 ENV MOD_AUTH_OPENIDC_VERSION 2.3.0
 ENV MOD_AUTH_OPENIDC_PKG libapache2-mod-auth-openidc_${MOD_AUTH_OPENIDC_VERSION}-1.jessie.1_amd64.deb
-RUN curl -s -L -o ~/${MOD_AUTH_OPENIDC_PKG} https://github.com/pingidentity/mod_auth_openidc/releases/download/v${MOD_AUTH_OPENIDC_VERSION}/${MOD_AUTH_OPENIDC_PKG}
+RUN curl -s -L -o ~/${MOD_AUTH_OPENIDC_PKG} https://github.com/zmartzone/mod_auth_openidc/releases/download/v${MOD_AUTH_OPENIDC_VERSION}/${MOD_AUTH_OPENIDC_PKG}
 RUN dpkg -i ~/${MOD_AUTH_OPENIDC_PKG} && echo ok || echo ko
 
 ADD 000-default.conf /etc/apache2/sites-available/

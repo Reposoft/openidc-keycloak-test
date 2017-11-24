@@ -1,11 +1,11 @@
 FROM solsson/httpd-stretch@sha256:bc26155ed0747ab1fc2af6a85e78cd2ffa801ba20488eaa87ad748e1197d0d29
 
 ENV OPENIDC_VERSION 2.3.3
-ENV OPENIDC_VERSION_DEB_URL https://github.com/pingidentity/mod_auth_openidc/releases/download/v$OPENIDC_VERSION/libapache2-mod-auth-openidc_$OPENIDC_VERSION-1.stretch.1_amd64.deb
+ENV OPENIDC_VERSION_DEB_URL https://github.com/zmartzone/mod_auth_openidc/releases/download/v$OPENIDC_VERSION/libapache2-mod-auth-openidc_$OPENIDC_VERSION-1.stretch.1_amd64.deb
 ENV OPENIDC_VERSION_DEB_SHA1 453f04d38c90cbb60c914abbaf9a775ab8470a2a
 
 ENV CJOSE_VERSION 0.5.1
-ENV CJOSE_DEB_URL https://github.com/pingidentity/mod_auth_openidc/releases/download/v2.3.0/libcjose0_$CJOSE_VERSION-1.stretch.1_amd64.deb
+ENV CJOSE_DEB_URL https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.3.0/libcjose0_$CJOSE_VERSION-1.stretch.1_amd64.deb
 ENV CJOSE_DEB_SHA1 bffa341882615a24df357d8659d1d553afa46abe
 
 ENV DEBIAN_FRONTEND noninteractive
