@@ -38,6 +38,7 @@ RUN depsRuntime=" \
 
 RUN sed -i 's|LoadModule rewrite_module modules/mod_rewrite.so|LoadModule rewrite_module modules/mod_rewrite.so\nLoadModule auth_openidc_module modules/mod_auth_openidc.so|' conf/httpd.conf
 
+ENTRYPOINT ["httpd-foreground"]
 RUN set -e; \
   set -x; \
   sed -i 's|^LogLevel warn|Include conf/loglevels.conf|' conf/httpd.conf; \
