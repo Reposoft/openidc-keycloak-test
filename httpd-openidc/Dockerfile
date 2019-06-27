@@ -1,4 +1,4 @@
-FROM httpd:2.4.38@sha256:20ead958907f15b638177071afea60faa61d2b6747c216027b8679b5fa58794b
+FROM httpd:2.4.39@sha256:a129c3a747fe9e406bf91d4d1fb2d4ed7b51d7a1f523fcf372c18c3c35981d12
 
 ENV OPENIDC_VERSION 2.3.10.2
 ENV OPENIDC_VERSION_DEB_URL https://github.com/zmartzone/mod_auth_openidc/releases/download/v${OPENIDC_VERSION}/libapache2-mod-auth-openidc_${OPENIDC_VERSION}-1.stretch+1_amd64.deb
