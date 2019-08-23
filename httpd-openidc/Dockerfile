@@ -2,12 +2,12 @@
 FROM httpd:2.4.41@sha256:98caed3e3a90ed9db8d25dcbb98eebe0ce56358a9dbbc940d7eb66a8e2b88252
 
 ENV OPENIDC_VERSION 2.4.0
-ENV OPENIDC_VERSION_DEB_URL https://github.com/zmartzone/mod_auth_openidc/releases/download/v${OPENIDC_VERSION}/libapache2-mod-auth-openidc_${OPENIDC_VERSION}-1.stretch+1_amd64.deb
-ENV OPENIDC_VERSION_DEB_SHA1 4d036ff21ed1627b6497ae68063f4d3fa5989c09
+ENV OPENIDC_VERSION_DEB_URL https://github.com/zmartzone/mod_auth_openidc/releases/download/v${OPENIDC_VERSION}/libapache2-mod-auth-openidc_${OPENIDC_VERSION}-1.buster+1_amd64.deb
+ENV OPENIDC_VERSION_DEB_SHA1 3a337eed5c902b18249d55a18a970720159edeab
 
 ENV CJOSE_VERSION 0.6.1.5
-ENV CJOSE_DEB_URL https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.4.0/libcjose0_$CJOSE_VERSION-1.stretch.1_amd64.deb
-ENV CJOSE_DEB_SHA1 e6635266471576055cdcd9cdd86d43ff8992d30a
+ENV CJOSE_DEB_URL https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.4.0/libcjose0_${CJOSE_VERSION}-1.buster+1_amd64.deb
+ENV CJOSE_DEB_SHA1 d6ca5569bed04a1450e054b3280702f1edfe2ae7
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -25,11 +25,11 @@ RUN depsRuntime=" \
   && apt-get update \
   && apt-get install -y --no-install-recommends $depsRuntime $depsBuild \
   && rm -r /var/lib/apt/lists/* \
-  && curl -sLS "$CJOSE_DEB_URL" -o libcjose.deb \
+  && curl -sLSf "$CJOSE_DEB_URL" -o libcjose.deb \
   && echo "$CJOSE_DEB_SHA1 libcjose.deb" | sha1sum -c - \
   && dpkg -i libcjose.deb \
   && rm libcjose.deb \
-  && curl -sLS "$OPENIDC_VERSION_DEB_URL" -o mod_auth_openidc-$OPENIDC_VERSION.deb \
+  && curl -sLSf "$OPENIDC_VERSION_DEB_URL" -o mod_auth_openidc-$OPENIDC_VERSION.deb \
   && echo "$OPENIDC_VERSION_DEB_SHA1 mod_auth_openidc-$OPENIDC_VERSION.deb" | sha1sum -c - \
   && dpkg -i mod_auth_openidc-$OPENIDC_VERSION.deb \
   && rm mod_auth_openidc-$OPENIDC_VERSION.deb \
