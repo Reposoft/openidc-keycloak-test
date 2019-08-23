@@ -1,20 +1,21 @@
-FROM httpd:2.4.39@sha256:a129c3a747fe9e406bf91d4d1fb2d4ed7b51d7a1f523fcf372c18c3c35981d12
+# debian:buster-slim@sha256:6571c4636d0bb4e4eb0f14f557f8ba9b104fd194dc19241a564d3c3661ea5c30
+FROM httpd:2.4.41@sha256:98caed3e3a90ed9db8d25dcbb98eebe0ce56358a9dbbc940d7eb66a8e2b88252
 
-ENV OPENIDC_VERSION 2.3.10.2
+ENV OPENIDC_VERSION 2.4.0
 ENV OPENIDC_VERSION_DEB_URL https://github.com/zmartzone/mod_auth_openidc/releases/download/v${OPENIDC_VERSION}/libapache2-mod-auth-openidc_${OPENIDC_VERSION}-1.stretch+1_amd64.deb
-ENV OPENIDC_VERSION_DEB_SHA1 e9a9b0aa382b31f04fada61dc443c3159f181d83
+ENV OPENIDC_VERSION_DEB_SHA1 4d036ff21ed1627b6497ae68063f4d3fa5989c09
 
-ENV CJOSE_VERSION 0.5.1
-ENV CJOSE_DEB_URL https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.3.0/libcjose0_$CJOSE_VERSION-1.stretch.1_amd64.deb
-ENV CJOSE_DEB_SHA1 bffa341882615a24df357d8659d1d553afa46abe
+ENV CJOSE_VERSION 0.6.1.5
+ENV CJOSE_DEB_URL https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.4.0/libcjose0_$CJOSE_VERSION-1.stretch.1_amd64.deb
+ENV CJOSE_DEB_SHA1 e6635266471576055cdcd9cdd86d43ff8992d30a
 
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN depsRuntime=" \
-    libcurl3 ca-certificates \
+    libcurl4 ca-certificates \
     libpcre3 \
     libjansson4 \
-    libhiredis0.13 \
+    libhiredis0.14 \
     apache2-api-20120211 \
   " \
   && depsBuild=" \
@@ -43,4 +44,4 @@ RUN set -e; \
   set -x; \
   sed -i 's|^LogLevel warn|Include conf/loglevels.conf|' conf/httpd.conf; \
        for L in warn info debug; do echo "<IfDefine LOGLEVEL=$L>\n  LogLevel $L\n</IfDefine>" >> conf/loglevels.conf; done
-CMD ["-DLOGLEVEL=info"]
+CMD [ "-DLOGLEVEL=info" ]
