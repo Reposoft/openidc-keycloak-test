@@ -16,7 +16,6 @@ RUN depsRuntime=" \
     libpcre3 \
     libjansson4 \
     libhiredis0.14 \
-    apache2-api-20120211 \
   " \
   && depsBuild=" \
     curl \
@@ -31,7 +30,8 @@ RUN depsRuntime=" \
   && rm libcjose.deb \
   && curl -sLSf "$OPENIDC_VERSION_DEB_URL" -o mod_auth_openidc-$OPENIDC_VERSION.deb \
   && echo "$OPENIDC_VERSION_DEB_SHA1 mod_auth_openidc-$OPENIDC_VERSION.deb" | sha1sum -c - \
-  && dpkg -i mod_auth_openidc-$OPENIDC_VERSION.deb \
+  && (dpkg -i mod_auth_openidc-$OPENIDC_VERSION.deb || echo "Accepting missing dependency") \
+  && dpkg --force-all -i mod_auth_openidc-$OPENIDC_VERSION.deb \
   && rm mod_auth_openidc-$OPENIDC_VERSION.deb \
   && ln -s /usr/lib/apache2/modules/mod_auth_openidc.so /usr/local/apache2/modules/mod_auth_openidc.so \
   && apt-get purge -y --auto-remove $depsBuild \
