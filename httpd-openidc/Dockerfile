@@ -1,9 +1,9 @@
 # debian:buster-slim@sha256:b137d31f0ebcce71c9dde707975e1d6582afa178e7033ccb341ddba04d807043
 FROM httpd:2.4.41@sha256:946c54069130dbf136903fe658fe7d113bd8db8004de31282e20b262a3e106fb
 
-ENV OPENIDC_VERSION 2.4.2
+ENV OPENIDC_VERSION 2.4.2.1
 ENV OPENIDC_VERSION_DEB_URL https://github.com/zmartzone/mod_auth_openidc/releases/download/v${OPENIDC_VERSION}/libapache2-mod-auth-openidc_${OPENIDC_VERSION}-1.buster+1_amd64.deb
-ENV OPENIDC_VERSION_DEB_SHA1 cf6527b5321fd4846635bf33b3ebc10f543b0822
+ENV OPENIDC_VERSION_DEB_SHA1 3a23acded026a39c52bda05792efe5a18d65ab09
 
 ENV CJOSE_VERSION 0.6.1.5
 ENV CJOSE_DEB_URL https://github.com/zmartzone/mod_auth_openidc/releases/download/v2.4.0/libcjose0_${CJOSE_VERSION}-1.buster+1_amd64.deb
